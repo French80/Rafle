@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Simple focus outline */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

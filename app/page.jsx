@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { recipients } from '@/data/recipients';
-import { occasions } from '@/data/occasions';
-import { getFeaturedProducts } from '@/lib/catalog';
-import ProductCard from '@/components/ProductCard';
+import { recipients } from '../data/recipients';
+import { occasions } from '../data/occasions';
+import { getFeaturedProducts } from '../lib/catalog';
+import ProductCard from '../components/ProductCard';
 
 export default function HomePage() {
   const featured = getFeaturedProducts(6);

@@ -5,3 +5,7 @@ export const recipients = [
   { slug: 'girls', label: 'Girls', description: 'Gift ideas for kids and teens (girl).' },
   { slug: 'unisex', label: 'Anyone', description: 'Universal ideas that work for almost anyone.' }
 ];
+
+export function getRecipientBySlug(slug) {
+  return recipients.find((r) => r.slug === slug);
+}

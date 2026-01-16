@@ -5,7 +5,7 @@ export default function SearchPage({ searchParams }) {
   const max = searchParams?.max ? Number(searchParams.max) : undefined;
   const sort = searchParams?.sort || "fresh";
 
-  const list = getProducts({ max, sort });
+  const list = await getProducts({ max, sort });
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">

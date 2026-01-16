@@ -1,7 +1,7 @@
 import ProductCard from "../../components/ProductCard";
 import { getProducts } from "../../lib/catalog";
 
-export default function SearchPage({ searchParams }) {
+export default async function SearchPage({ searchParams }) {
   const max = searchParams?.max ? Number(searchParams.max) : undefined;
   const sort = searchParams?.sort || "fresh";
 

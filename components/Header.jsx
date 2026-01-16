@@ -9,8 +9,8 @@ export default function Header() {
         </Link>
 
         <nav className="flex gap-4 text-sm">
-  <Link href="/recipient/men" className="hover:underline">Recipients</Link>
-  <Link href="/occasion/christmas" className="hover:underline">Occasions</Link>
+  <Link href="/recipient" className="hover:underline">Recipients</Link>
+  <Link href="/occasion" className="hover:underline">Occasions</Link>
   <Link href="/secret-santa" className="hover:underline">Secret Santa</Link>
   <Link href="/search" className="hover:underline">Search</Link>
 </nav>

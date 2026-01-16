@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
-import { recipients } from '../data/recipients';
-import { getProductsByRecipient } from '../lib/catalog';
-import ProductCard from '../components/ProductCard';
+import { recipients } from "../../../data/recipients";
+import { getProductsByRecipient } from "../../../lib/catalog";
+import ProductCard from "../../../components/ProductCard";
 
 export function generateStaticParams() {
   return recipients.map((r) => ({ slug: r.slug }));

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { occasions } from "../../../data/occasions";
-import { getProductsByOccasion } from '../lib/catalog';
-import ProductCard from '../components/ProductCard';
+import ProductCard from "../../../components/ProductCard";
+import { getProductsByOccasion } from "../../../lib/catalog";
 
 export function generateStaticParams() {
   return occasions.map((o) => ({ slug: o.slug }));

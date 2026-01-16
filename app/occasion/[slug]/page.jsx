@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { occasions } from '@/data/occasions';
+import { occasions } from "../../../data/occasions";
 import { getProductsByOccasion } from '@/lib/catalog';
 import ProductCard from '@/components/ProductCard';
 

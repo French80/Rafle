@@ -10,6 +10,8 @@ export const products = [
     occasions: ['birthday', 'christmas', 'graduation'],
     tags: ['tech', 'music', 'travel'],
     price: '$$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Amazon',
     affiliateUrl: 'https://www.amazon.com/dp/B000000001/?tag=YOURTAG-20',
     image: '/placeholder.svg'
@@ -22,6 +24,8 @@ export const products = [
     occasions: ['birthday', 'christmas', 'wedding'],
     tags: ['cooking', 'home'],
     price: '$$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Amazon',
     affiliateUrl: 'https://www.amazon.com/dp/B000000002/?tag=YOURTAG-20',
     image: '/placeholder.svg'
@@ -34,6 +38,8 @@ export const products = [
     occasions: ['birthday', 'valentines-day', 'mothers-day', 'christmas'],
     tags: ['jewelry', 'personalized'],
     price: '$$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Etsy',
     affiliateUrl: 'https://www.etsy.com/?utm_source=YOUR_AFFILIATE',
     image: '/placeholder.svg'
@@ -46,6 +52,8 @@ export const products = [
     occasions: ['birthday', 'christmas'],
     tags: ['stem', 'toys'],
     price: '$$$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Amazon',
     affiliateUrl: 'https://www.amazon.com/dp/B000000003/?tag=YOURTAG-20',
     image: '/placeholder.svg'
@@ -58,6 +66,8 @@ export const products = [
     occasions: ['christmas', 'birthday'],
     tags: ['games', 'family'],
     price: '$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Amazon',
     affiliateUrl: 'https://www.amazon.com/dp/B000000004/?tag=YOURTAG-20',
     image: '/placeholder.svg'
@@ -70,6 +80,8 @@ export const products = [
     occasions: ['christmas', 'birthday', 'mothers-day'],
     tags: ['cozy', 'home'],
     price: '$$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Amazon',
     affiliateUrl: 'https://www.amazon.com/dp/B000000005/?tag=YOURTAG-20',
     image: '/placeholder.svg'
@@ -82,6 +94,8 @@ export const products = [
     occasions: ['birthday', 'graduation', 'christmas'],
     tags: ['fitness', 'outdoors'],
     price: '$$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Amazon',
     affiliateUrl: 'https://www.amazon.com/dp/B000000006/?tag=YOURTAG-20',
     image: '/placeholder.svg'
@@ -94,6 +108,8 @@ export const products = [
     occasions: ['mothers-day', 'fathers-day', 'christmas', 'valentines-day'],
     tags: ['sentimental', 'personalized'],
     price: '$$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Other',
     affiliateUrl: 'https://example.com/affiliate-photo-book',
     image: '/placeholder.svg'
@@ -106,6 +122,8 @@ export const products = [
     occasions: ['wedding', 'christmas', 'birthday'],
     tags: ['coffee', 'home'],
     price: '$$$',
+    priceValue: 59.99,
+    popularity: 90,
     merchant: 'Amazon',
     affiliateUrl: 'https://www.amazon.com/dp/B000000007/?tag=YOURTAG-20',
     image: '/placeholder.svg'

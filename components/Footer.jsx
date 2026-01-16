@@ -17,7 +17,7 @@ export default function Footer() {
           <Link className="hover:underline" href="/terms">Terms</Link>
         </div>
 
-        <p className="mt-6 text-xs text-gray-400">© {new Date().getFullYear()} GiftHaven. All rights reserved.</p>
+        <p className="mt-6 text-xs text-gray-400">© {new Date().getFullYear()} Rafle. All rights reserved.</p>
       </div>
     </footer>
   );

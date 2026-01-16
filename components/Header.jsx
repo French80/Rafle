@@ -8,11 +8,12 @@ export default function Header() {
           Rafle
         </Link>
 
-        <nav className="flex items-center gap-3 text-sm text-gray-700">
-          <Link className="hover:text-gray-900" href="/search">Search</Link>
-          <Link className="hover:text-gray-900" href="/secret-santa">Secret Santa</Link>
-          <Link className="hover:text-gray-900" href="/about">About</Link>
-        </nav>
+        <nav className="flex gap-4 text-sm">
+  <Link href="/recipient/men" className="hover:underline">Recipients</Link>
+  <Link href="/occasion/christmas" className="hover:underline">Occasions</Link>
+  <Link href="/secret-santa" className="hover:underline">Secret Santa</Link>
+  <Link href="/search" className="hover:underline">Search</Link>
+</nav>
       </div>
     </header>
   );

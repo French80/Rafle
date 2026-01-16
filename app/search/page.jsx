@@ -1,41 +1,46 @@
-'use client';
-
-import { useMemo, useState } from 'react';
-import { searchProducts, getAllProducts } from '../../lib/catalog';
 import ProductCard from "../../components/ProductCard";
+import { getProducts } from "../../lib/catalog";
 
-export default function SearchPage() {
-  const [query, setQuery] = useState('');
+export default function SearchPage({ searchParams }) {
+  const max = searchParams?.max ? Number(searchParams.max) : undefined;
+  const sort = searchParams?.sort || "fresh";
 
-  const results = useMemo(() => {
-    if (!query.trim()) return getAllProducts().slice(0, 12);
-    return searchProducts(query).slice(0, 24);
-  }, [query]);
+  const list = getProducts({ max, sort });
 
   return (
-    <div className="space-y-6">
-      <header>
-        <h1 className="text-2xl font-bold">Search gifts</h1>
-        <p className="mt-2 text-gray-700">Try keywords like <em>cooking</em>, <em>fitness</em>, <em>teen</em>, or <em>under $25</em>.</p>
-      </header>
+    <main className="mx-auto max-w-6xl px-4 py-8">
+      <h1 className="text-3xl font-extrabold">Search</h1>
+      <p className="mt-2 text-gray-600">
+        Browse gift ideas. Use filters to narrow things down.
+      </p>
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-        <label className="block text-sm font-medium text-gray-900" htmlFor="q">What are you shopping for?</label>
-        <input
-          id="q"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search gift ideas..."
-          className="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:border-gray-900"
-        />
-        <p className="mt-3 text-xs text-gray-500">Disclosure: We may earn commissions from qualifying purchases via affiliate links.</p>
+      <div className="mt-6 flex flex-wrap gap-2">
+        <a href="/search?sort=fresh" className="rounded-xl border px-4 py-2 text-sm hover:bg-white">
+          Fresh
+        </a>
+        <a href="/search?sort=popular" className="rounded-xl border px-4 py-2 text-sm hover:bg-white">
+          Popular
+        </a>
+        <a href="/search?sort=budget" className="rounded-xl border px-4 py-2 text-sm hover:bg-white">
+          Budget
+        </a>
+
+        <a href="/search?max=25" className="rounded-xl border px-4 py-2 text-sm hover:bg-white">
+          Under $25
+        </a>
+        <a href="/search?max=50" className="rounded-xl border px-4 py-2 text-sm hover:bg-white">
+          Under $50
+        </a>
+        <a href="/search?max=100" className="rounded-xl border px-4 py-2 text-sm hover:bg-white">
+          Under $100
+        </a>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {results.map((p) => (
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {list.map((p) => (
           <ProductCard key={p.id} product={p} />
         ))}
       </div>
-    </div>
+    </main>
   );
 }

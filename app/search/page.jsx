@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { searchProducts, getAllProducts } from '@/lib/catalog';
+import { searchProducts, getAllProducts } from '../lib/catalog';
 import ProductCard from "../../components/ProductCard";
 
 export default function SearchPage() {

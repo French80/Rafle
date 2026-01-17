@@ -2,11 +2,11 @@ import ProductCard from "../../../components/ProductCard";
 import { getProducts } from "../../../lib/catalog";
 import { getRecipientBySlug } from "../../../data/recipients";
 
-export default async function RecipientPage({ params }) {
+export default async function RecipientPage({ params, searchParams }) {
   const recipient = params.slug;
-  const recipientInfo = getRecipientBySlug(recipient);
 
-  const list = await getProducts({ recipient, sort: "fresh" });
+  const sort = searchParams?.sort || "fresh";
+  const list = await getProducts({ recipient, sort });
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">

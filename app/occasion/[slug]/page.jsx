@@ -1,39 +1,49 @@
-import { notFound } from 'next/navigation';
-import { occasions } from "../../../data/occasions";
 import ProductCard from "../../../components/ProductCard";
-import { getProductsByOccasion } from "../../../lib/catalog";
+import { getProducts } from "../../../lib/catalog";
+import { getOccasionBySlug } from "../../../data/occasions";
 
-export function generateStaticParams() {
-  return occasions.map((o) => ({ slug: o.slug }));
-}
+export default async function OccasionPage({ params }) {
+  const occasion = params.slug;
+  const occasionInfo = getOccasionBySlug(occasion);
 
-export default function OccasionPage({ params }) {
-  const occasion = occasions.find((o) => o.slug === params.slug);
-  if (!occasion) return notFound();
-
-  const items = getProductsByOccasion(params.slug);
+  const list = await getProducts({ occasion, sort: "fresh" });
 
   return (
-    <div className="space-y-6">
-      <header>
-        <h1 className="text-2xl font-bold">{occasion.label} gift ideas</h1>
-        <p className="mt-2 text-gray-700">{occasion.description}</p>
-        <p className="mt-3 text-xs text-gray-500">
-          Disclosure: We may earn commissions from qualifying purchases via affiliate links.
-        </p>
-      </header>
+    <main className="mx-auto max-w-6xl px-4 py-8">
+      <h1 className="text-3xl font-extrabold">
+        Gifts for {occasionInfo?.name || occasion}
+      </h1>
 
-      {items.length === 0 ? (
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 text-gray-700">
-          No gifts yet for this occasion. Add products in <code className="font-mono">data/products.js</code>.
-        </div>
-      ) : (
-        <div className="grid gap-4 md:grid-cols-2">
-          {items.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      )}
-    </div>
+      <p className="mt-2 text-gray-600">
+        Curated gift ideas for this occasion. Updated regularly.
+      </p>
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        <a
+          href={`/occasion/${occasion}?sort=fresh`}
+          className="rounded-xl border px-4 py-2 text-sm hover:bg-white"
+        >
+          Fresh
+        </a>
+        <a
+          href={`/occasion/${occasion}?sort=popular`}
+          className="rounded-xl border px-4 py-2 text-sm hover:bg-white"
+        >
+          Popular
+        </a>
+        <a
+          href={`/occasion/${occasion}?sort=budget`}
+          className="rounded-xl border px-4 py-2 text-sm hover:bg-white"
+        >
+          Budget
+        </a>
+      </div>
+
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {list.map((p) => (
+          <ProductCard key={p.id} product={p} />
+        ))}
+      </div>
+    </main>
   );
 }

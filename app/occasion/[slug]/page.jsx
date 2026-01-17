@@ -2,11 +2,14 @@ import ProductCard from "../../../components/ProductCard";
 import { getProducts } from "../../../lib/catalog";
 import { getOccasionBySlug } from "../../../data/occasions";
 
-export default async function OccasionPage({ params }) {
+export default async function OccasionPage({ params, searchParams }) {
   const occasion = params.slug;
-  const occasionInfo = getOccasionBySlug(occasion);
 
-  const list = await getProducts({ occasion, sort: "fresh" });
+  const sort = searchParams?.sort || "fresh";
+  const list = await getProducts({ occasion, sort });
+
+  ...
+}
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">

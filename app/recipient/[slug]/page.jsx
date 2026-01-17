@@ -1,39 +1,49 @@
-import { notFound } from 'next/navigation';
-import { recipients } from "../../../data/recipients";
-import { getProductsByRecipient } from "../../../lib/catalog";
 import ProductCard from "../../../components/ProductCard";
+import { getProducts } from "../../../lib/catalog";
+import { getRecipientBySlug } from "../../../data/recipients";
 
-export function generateStaticParams() {
-  return recipients.map((r) => ({ slug: r.slug }));
-}
+export default async function RecipientPage({ params }) {
+  const recipient = params.slug;
+  const recipientInfo = getRecipientBySlug(recipient);
 
-export default function RecipientPage({ params }) {
-  const recipient = recipients.find((r) => r.slug === params.slug);
-  if (!recipient) return notFound();
-
-  const items = getProductsByRecipient(params.slug);
+  const list = await getProducts({ recipient, sort: "fresh" });
 
   return (
-    <div className="space-y-6">
-      <header>
-        <h1 className="text-2xl font-bold">Gift ideas for {recipient.label}</h1>
-        <p className="mt-2 text-gray-700">{recipient.description}</p>
-        <p className="mt-3 text-xs text-gray-500">
-          Disclosure: We may earn commissions from qualifying purchases via affiliate links.
-        </p>
-      </header>
+    <main className="mx-auto max-w-6xl px-4 py-8">
+      <h1 className="text-3xl font-extrabold">
+        Gifts for {recipientInfo?.name || recipient}
+      </h1>
 
-      {items.length === 0 ? (
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 text-gray-700">
-          No gifts yet for this category. Add products in <code className="font-mono">data/products.js</code>.
-        </div>
-      ) : (
-        <div className="grid gap-4 md:grid-cols-2">
-          {items.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      )}
-    </div>
+      <p className="mt-2 text-gray-600">
+        Curated gift ideas. Updated regularly to keep things fresh.
+      </p>
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        <a
+          href={`/recipient/${recipient}?sort=fresh`}
+          className="rounded-xl border px-4 py-2 text-sm hover:bg-white"
+        >
+          Fresh
+        </a>
+        <a
+          href={`/recipient/${recipient}?sort=popular`}
+          className="rounded-xl border px-4 py-2 text-sm hover:bg-white"
+        >
+          Popular
+        </a>
+        <a
+          href={`/recipient/${recipient}?sort=budget`}
+          className="rounded-xl border px-4 py-2 text-sm hover:bg-white"
+        >
+          Budget
+        </a>
+      </div>
+
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {list.map((p) => (
+          <ProductCard key={p.id} product={p} />
+        ))}
+      </div>
+    </main>
   );
 }
